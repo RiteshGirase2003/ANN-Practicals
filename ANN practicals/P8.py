@@ -9,7 +9,9 @@ class HopfieldNetwork:
         for pattern in patterns:
             pattern = np.reshape(pattern, (self.n, 1))
             self.weights += np.dot(pattern, pattern.T)
+        # this replace diagonal values with 0
         np.fill_diagonal(self.weights, 0)
+
 
     def predict(self, pattern, max_iter=100):
         pattern = np.reshape(pattern, (self.n, 1))
